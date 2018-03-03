@@ -216,17 +216,17 @@ class Card:
 
 
 def exercise_1():
-    print('\n{:=^20}'.format('Задача-1'))
-
-
-def main():
-    #exercise_1()
+    print('\n{:=^26}'.format('Задача-1'))
     player_1 = Player('Игрок')
     player_2 = Player('Компьютер')
     game = Game(player_1, player_2)
     game.start_game()
 
-    #print('\n' + '=' * 26)
+
+def main():
+    exercise_1()
+
+    print('\n' + '=' * 26)
 
 
 if __name__ == '__main__':
