@@ -63,19 +63,19 @@ def is_parallelogram(a, b, c, d):
 
 def main():
     print()
-    #print(fibonacci(4, 10))
-    #sort_to_max([randint(-100, 100) for _ in range(randint(0, 100))])
-    #my_filter(lambda x: x == 0, [randint(-100, 100) for _ in range(randint(0, 100))])
-    # for _ in range(100000):
-    #     points = [(randint(-10, 10), randint(-10, 10)) for _ in range(4)]
-    #     if is_parallelogram(*points):
-    #         print(True, end=': ')
-    #         plt.plot(*list(zip(*points)), linestyle='-', marker='.', color='red', markersize=10)
-    #         plt.show()
-    #         plt.close()
-    #     else:
-    #         print(False, end=': ')
-    #     print(points)
+    print(fibonacci(4, 10))
+    sort_to_max([randint(-100, 100) for _ in range(randint(0, 100))])
+    my_filter(lambda x: x == 0, [randint(-100, 100) for _ in range(randint(0, 100))])
+    for _ in range(100000):
+        points = [(randint(-10, 10), randint(-10, 10)) for _ in range(4)]
+        if is_parallelogram(*points):
+            print(True, end=': ')
+            plt.plot(*list(zip(*points)), linestyle='-', marker='.', color='red', markersize=10)
+            plt.show()
+            plt.close()
+        else:
+            print(False, end=': ')
+        print(points)
 
 
 
