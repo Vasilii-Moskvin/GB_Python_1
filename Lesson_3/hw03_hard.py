@@ -244,17 +244,14 @@ def exercise_3():
             w.writelines(fruits)
 
 def main():
-    # for _ in range(1000000):
-    #     eq = gen_eq()
-    #     e_1 = exercise_1(eq)
-    #     e_1_1 = exercise_1_1(eq)
-    #     if e_1 != e_1_1:
-    #         print('Error:\neq: {}\nFr: {}\nmy: {}'.format(eq, e_1, e_1_1))
-    #     if len(e_1_1.split()) == 1:
-    #         print(e_1_1)
+    for _ in range(100000):
+        eq = gen_eq()
+        e_1 = exercise_1(eq)
+        e_1_1 = exercise_1_1(eq)
+        if e_1 != e_1_1:
+            print('Error:\neq: {}\nFr: {}\nmy: {}'.format(eq, e_1, e_1_1))
 
-
-    #exercise_2()
+    exercise_2()
     exercise_3()
     print('\n' + '=' * 18)
 
