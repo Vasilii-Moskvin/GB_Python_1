@@ -163,12 +163,9 @@ def py_test(got, expected):
 
 
 def main():
-    #exercise_1()
-    #exercise_2()
-    #exercise_3()
-    st = '1234567890'
-    rex = re.compile(r'(?<=\d{1})(\d)(\d)')
-    print(rex.findall(st))
+    exercise_1()
+    exercise_2()
+    exercise_3()
     print('\n' + '=' * 20)
 
 
