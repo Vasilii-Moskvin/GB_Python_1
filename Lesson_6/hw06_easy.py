@@ -170,9 +170,9 @@ def exercise_2():
                 print(True, end=': ')
                 print('height: {:.2f}'.format(f.height))
                 print('square: {:.2f}'.format(f.square))
-                #plt.plot(*list(zip(*points)), linestyle='-', marker='.', color='red', markersize=10)
-                #plt.show()
-                #plt.close()
+                plt.plot(*list(zip(*points)), linestyle='-', marker='.', color='red', markersize=10)
+                plt.show()
+                plt.close()
          except WrongNumberOfPoints as e:
              pass
 
@@ -180,7 +180,7 @@ def exercise_2():
 
 
 def main():
-    #exercise_1()
+    exercise_1()
     exercise_2()
     print('\n' + '=' * 35)
 
