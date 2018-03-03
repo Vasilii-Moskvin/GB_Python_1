@@ -40,7 +40,8 @@ def exercise_1():
             else:
                 print('Успешно перешел в {}'.format(path_to_dir))
         elif ans == '2':
-            hw.exercise_2()
+            for src in os.listdir():
+                print(src)
         elif ans == '3':
             try:
                 shutil.rmtree(path_to_dir)
@@ -70,8 +71,6 @@ def py_test(got, expected):
 
 def main():
     exercise_1()
-    #exercise_2()
-    #exercise_3()
     print('\n' + '=' * 20)
 
 

@@ -36,7 +36,7 @@ def exercise_1():
 def exercise_2():
     print('\n{:=^20}'.format('Задача-2'))
     for src in os.listdir():
-        if os.path.isdir():
+        if os.path.isdir(os.path.join(os.getcwd(), src)):
             print(src)
 
 # Задача-3:
@@ -58,8 +58,8 @@ def py_test(got, expected):
 
 
 def main():
-    #exercise_1()
-    #exercise_2()
+    exercise_1()
+    exercise_2()
     exercise_3()
     print('\n' + '=' * 20)
 
