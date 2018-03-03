@@ -51,8 +51,8 @@ def exercise_3():
 
 def main():
     exercise_1()
-    #exercise_2()
-    #exercise_3()
+    exercise_2()
+    exercise_3()
     print('\n' + '=' * 18)
 
 
