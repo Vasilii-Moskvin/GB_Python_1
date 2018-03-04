@@ -131,7 +131,7 @@ def exercise_1():
 
 def connect_with_DB():
     path_to_db = r'C:\Users\vasil\Downloads\python\python_1\8\my_hw\test'
-    conn=sqlite3.connect(r'C:\Users\vasil\Downloads\python\python_1\8\my_hw\test')
+    conn=sqlite3.connect(path_to_db)
     if os.path.exists(path_to_db):
         return conn.cursor(), conn
     else:
