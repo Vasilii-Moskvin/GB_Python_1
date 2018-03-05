@@ -2,6 +2,9 @@ import requests
 import sqlite3
 import os
 import datetime
+import urllib
+import gzip
+import shutil
 
 """ OpenWeatherMap
 OpenWeatherMap — онлайн-сервис, который предоставляет бесплатный API для доступа к данным о текущей погоде, прогнозам, для web-сервисов и мобильных приложений. Архивные данные доступны только на коммерческой основе. В качестве источника данных используются официальные метеорологические службы, данные из метеостанций аэропортов, и данные с частных метеостанций.
@@ -140,9 +143,21 @@ def connect_with_DB():
         conn.commit()
         return c, conn
 
+def load_list_of_city():
+    destination = 'city.list.json.gz'
+    url = 'http://bulk.openweathermap.org/sample/city.list.json.gz'
+    urllib.request.urlretrieve(url, destination)
+
+def unzip():
+    with gzip.open('city.list.json.gz', 'rb') as f_in:
+        with open('city.list.json', 'wb') as f_out:
+            shutil.copyfileobj(f_in, f_out)
+
 
 def main():
-    exercise_1()
+    #exercise_1()
+    #load_list_of_city()
+    unzip()
     #c.execute("""insert into stocks values ('2006-01-05','BUY','RHAT',100,35.14)""") 
     #c.execute('select * from stocks order by price') 
     #print(c.fetchall())
