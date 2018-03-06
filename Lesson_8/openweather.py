@@ -232,7 +232,7 @@ def unzip(destination, path_to_json):
 
 def main():
     exercise_1()
-     print('\n' + '=' * 26)
+    print('\n' + '=' * 26)
 
 
 if __name__ == '__main__':
