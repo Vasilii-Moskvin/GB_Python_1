@@ -190,17 +190,17 @@ def push_data_to_DB(ids):
         if k == 'list':
             for index, src in enumerate(v):
                 st = (src['id'], src['name'], datetime.date.fromtimestamp(src['dt']), src['main']['temp_min'], src['weather'][0]['id'])
-                c_db.execute('SELECT EXISTS(SELECT id_city FROM wather WHERE id_city = ?)', (src['id'],))
+                c_db.execute('SELECT EXISTS(SELECT id_city FROM weather WHERE id_city = ?)', (src['id'],))
                 flag = c_db.fetchall()
                 if flag != [(0,)]:
-                    c_db.execute('SELECT date FROM wather WHERE id_city = ?', (src['id'],))
+                    c_db.execute('SELECT date FROM weather WHERE id_city = ?', (src['id'],))
                     d = c_db.fetchall()[0][0]
-                    c_db.execute('UPDATE wather set temp = ? where id_city = ?', (src['main']['temp_min'], src['id']))
-                    c_db.execute('UPDATE wather set id_wather = ? where id_city = ?', (src['weather'][0]['id'], src['id']))
+                    c_db.execute('UPDATE weather set temp = ? where id_city = ?', (src['main']['temp_min'], src['id']))
+                    c_db.execute('UPDATE weather set id_weather = ? where id_city = ?', (src['weather'][0]['id'], src['id']))
                     if datetime.date(*list(map(int, d.split('-')))) != st[2]:
-                        c_db.execute('UPDATE wather set date = ? where id_city = ?', (st[2], src['id']))
+                        c_db.execute('UPDATE weather set date = ? where id_city = ?', (st[2], src['id']))
                 else:
-                    c_db.execute('insert into wather values (?,?,?,?,?)', st)
+                    c_db.execute('insert into weather values (?,?,?,?,?)', st)
                 conn_db.commit()
     c_db.close()
 
@@ -213,7 +213,7 @@ def connect_with_DB():
     else:
         conn = sqlite3.connect(path_to_db)
         c = conn.cursor()
-        c.execute('''create table wather (id_city INTEGER PRIMARY KEY, city VARCHAR(255), date DATE, temp INTEGER, id_wather INTEGER)''') 
+        c.execute('''create table weather (id_city INTEGER PRIMARY KEY, city VARCHAR(255), date DATE, temp INTEGER, id_weather INTEGER)''') 
         conn.commit()
         return c, conn
 
