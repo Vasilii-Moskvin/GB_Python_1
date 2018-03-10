@@ -1,10 +1,20 @@
+from functools import reduce
+from random import randint
+from collections import namedtuple
+from itertools import combinations
+
 # Задание-1:
 # Матрицы в питоне реализуются в виде вложенных списков:
 # Пример. Дано:
 matrix = [[1, 0, 8],
           [3, 4, 1],
           [0, 4, 2]]
-          
+
+def exercise_1():
+    print('\n{:=^26}'.format('Задача-1'))
+    global matrix
+    print(list(map(list, zip(*matrix))))
+    # print(list(map(list, zip(matrix))))
 # Выполнить поворот (транспонирование) матрицы
 # Пример. Результат:
 # matrix_rotate = [[1, 3, 0],
@@ -39,8 +49,50 @@ number = """
 05886116467109405077541002256983155200055935729725
 71636269561882670428252483600823257530420752963450"""
 
+def exercise_2():
+    print('\n{:=^26}'.format('Задача-2'))
+    global number
+    number = ''.join(number.split('\n'))
+    m1 = max([(i, reduce(lambda x, y: x*y, map(int, *number[i:i + 5].split())))
+              for i in range(len(number)) if i + 5 <= len(number)], 
+             key=lambda x: x[1])
+    print(m1)
+
+
 # Задание-3 (Ферзи):
 # Известно, что на доске 8×8 можно расставить 8 ферзей так, чтобы они не били друг друга.
 # Вам дана расстановка 8 ферзей на доске. Определите, есть ли среди них пара бьющих друг друга.
 # Программа получает на вход восемь пар чисел, каждое число от 1 до 8 — координаты 8 ферзей.
 # Если ферзи не бьют друг друга, выведите слово NO, иначе выведите YES.
+
+Queen = namedtuple('Queen', ('x', 'y'))
+
+def gen_queens():
+    q = [Queen(randint(1, 8), randint(1, 8)) for _ in range(8)]
+    # test = [(1, 4), (2, 1), (3, 5), (4, 8), (5, 2), (6, 7), (7, 3), (8, 6)]
+    # q = [Queen(x, y) for x, y in test]
+    return tuple(q)
+
+
+def exercise_3():
+    print('\n{:=^26}'.format('Задача-3'))
+    for _ in range(100000):
+        lst = gen_queens()
+        res = 'YES' if any([q1.x - q2.x == q1.y - q2.y or q1.x == q2.x or q1.y == q2.y for q1, q2 in combinations(lst, 2)]) else 'NO'
+        if res == 'NO':
+            print(lst)
+        
+
+
+
+
+def main():
+    exercise_1()
+    exercise_2()
+    exercise_3()
+
+    print('\n' + '=' * 26)
+
+
+if __name__ == '__main__':
+    main()
